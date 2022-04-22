@@ -17,6 +17,9 @@ class Actions:
     def __init__(self, page):
         self.page = page
 
+    def locator(self, locator):
+        self.page.locator(locator)
+
     def click(self, locator=None, index=None):
         if locator is not None and index is not None:
             self.page.locator(locator).nth(index).click(force=True)
@@ -182,8 +185,8 @@ class Actions:
                 self.click(self.NEXT_ARROW)
 
         self.click(self.BUTTON_MONTH)
-        self.click(self.MONTHS, month-1)
-        self.click(self.DAYS, date-1)
+        self.click(self.MONTHS, month - 1)
+        self.click(self.DAYS, date - 1)
         self.click(self.BUTTON_OK)
 
     def get_project_detail(self, project_name, *column_names):
@@ -235,7 +238,7 @@ class Actions:
 
     def select_specific_row(self, row_name):
         self.fill(self.TEXTBOX_FILTER, row_name)
-        row_locator = "//*[text()='"+row_name+"']/parent::div/parent::td/parent::tr"
+        row_locator = "//*[text()='" + row_name + "']/parent::div/parent::td/parent::tr"
         self.click(row_locator)
         self.click(self.BUTTON_OK)
 

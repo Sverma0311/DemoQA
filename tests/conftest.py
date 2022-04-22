@@ -22,6 +22,7 @@ def setup(request):
     new_page.set_default_timeout(40000)
     request.cls.page = new_page
     new_page.goto("https://demoqa.com/")
+
     yield
     new_page.close()
 
